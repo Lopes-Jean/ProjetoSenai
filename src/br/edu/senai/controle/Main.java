@@ -25,12 +25,13 @@ public class Main {
 
   public static void main(String[] args) {
 
-//    Main obj = new Main();
-//    obj.run();
+
 
 	  System.out.println("Bem vindo a planilha de gastos");
 	  
 	  // carregar o banco de dados // criar um get leitura de arquivo 
+//	  Main obj = new Main();
+//	  obj.run();
 	  
 	  // perguntar oq ele quer fazer 
 	//  System.out.println("Informe oque vc deseja fazer: \n\tS - Para retornar valor de saldo \n\tG - Para adicionar novo gasto \n\tR - para adicionar um novo rendimento \n\tQ - Para encerrar o programa");
@@ -45,7 +46,7 @@ public class Main {
 		  if (simbolo.equals("S")|| simbolo.equals("s"))
 		  {
 			  // rotina para buscar saldo disponivel
-			  System.out.println("rotina para buscar saldo disponivel");
+			  
 		  }
 		  
 		  else if (simbolo.equals("G")|| simbolo.equals("g"))
@@ -62,14 +63,7 @@ public class Main {
 		  {
 			  break;
 		  }
-	  }
-	  
-	  
-	  
-  
-
-	  
-	  
+	  }	  
   }
 }
 
