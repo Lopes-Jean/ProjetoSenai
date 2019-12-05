@@ -25,7 +25,12 @@ public class Main {
 
   public static void main(String[] args) {
 
+<<<<<<< HEAD
 
+=======
+//    Main obj = new Main();
+//    obj.run();oiuytyutupoiouityyioy09
+>>>>>>> bcf87a36f0151606228d3111fe52bb3feef02796
 
 	  System.out.println("Bem vindo a planilha de gastos");
 	  
