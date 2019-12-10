@@ -10,6 +10,53 @@ public class EntradaESaida {
 	private String Gastos;
 	private String Receita;
 	
+	
+	public EntradaESaida() {
+		
+		super();
+		
+	}
+
+
+	public EntradaESaida(String saldo, String gastos, String receita) {
+		super();
+		Saldo = saldo;
+		Gastos = gastos;
+		Receita = receita;
+	}
+
+
+	public String getSaldo() {
+		return Saldo;
+	}
+
+
+	public void setSaldo(String saldo) {
+		Saldo = saldo;
+	}
+
+
+	public String getGastos() {
+		return Gastos;
+	}
+
+
+	public void setGastos(String gastos) {
+		Gastos = gastos;
+	}
+
+
+	public String getReceita() {
+		return Receita;
+	}
+
+
+	public void setReceita(String receita) {
+		Receita = receita;
+	}
+	
+	
+	
 
 //	public void run() {
 //
@@ -24,7 +71,7 @@ public class EntradaESaida {
 //
 //	            String[] pais = linha.split(csvDivisor);
 //
-//	            System.out.println("País [code= " + pais[pais.length-4] 
+//	            System.out.println("Pais [code= " + pais[pais.length-4] 
 //	                                 + " , name=" + pais[pais.length-1] + "]");
 //
 //	        }
