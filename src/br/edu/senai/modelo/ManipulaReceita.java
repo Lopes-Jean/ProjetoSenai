@@ -1,15 +1,20 @@
 package br.edu.senai.modelo;
 
-public class ManipulaReceita extends EntradaESaida  {
+import java.util.Scanner;
 
-	private String origem;
-	private int valor;
+public class ManipulaReceita extends Manipula  {
+
+	Scanner entrada = new Scanner(System.in);
+
+	// Cria construtor vazio
+	public ManipulaReceita() {
+		super();
+	}
+
 	
-	
-	public ManipulaReceita(String saldo, String gastos, String receita, String origem, int valor) {
-		super(saldo, gastos, receita);
-		this.origem = origem;
-		this.valor = valor;
+	//Construtor com campos
+	public ManipulaReceita(String origem, double valor) {
+		super(origem, valor);
 	}
 
 
@@ -23,7 +28,7 @@ public class ManipulaReceita extends EntradaESaida  {
 	}
 
 
-	public int getValor() {
+	public double getValor() {
 		return valor;
 	}
 
@@ -32,6 +37,16 @@ public class ManipulaReceita extends EntradaESaida  {
 		this.valor = valor;
 	}
 	
+	public void adicionaReceita() {
+		System.out.println("Informe o valor que você deseja adicionar como receita: ");
+		this.valor = entrada.nextDouble();
+		
+		
+		System.out.println("Informe a origem da receita: ");
+		this.origem = entrada.next();
+		
+		System.out.println("\n\tDados adicionados com sucesso!\n");
+	}
 	
 	
 }
