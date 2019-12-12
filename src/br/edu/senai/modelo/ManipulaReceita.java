@@ -4,16 +4,17 @@ import java.util.Scanner;
 
 public class ManipulaReceita extends Manipula  {
 
-	Scanner entrada = new Scanner(System.in);
+	private Scanner entrada;
 
 	// Cria construtor vazio
-	public ManipulaReceita() {
+	public ManipulaReceita(Scanner entrada) {
 		super();
+		this.entrada = entrada;
 	}
 
 	
 	//Construtor com campos
-	public ManipulaReceita(String origem, double valor) {
+	public ManipulaReceita(String origem, double valor, Scanner entrada) {
 		super(origem, valor);
 	}
 

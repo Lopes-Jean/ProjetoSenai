@@ -4,19 +4,23 @@ import java.util.Scanner;
 
 public class ManipulaGasto extends Manipula {
 
-	Scanner entrada = new Scanner(System.in);
+	private Scanner entrada;
+	
+	ManipulaSaldo manpSaldo;
 
 	// Criando construtor Vazio
-	public ManipulaGasto() {
+	public ManipulaGasto(Scanner entrada) {
 		super();
+		this.entrada = entrada;
+		
 		
 	}
 
 
 	//Construtor com campos
-	public ManipulaGasto(String origem, double valor) {
+	public ManipulaGasto(String origem, double valor, Scanner entrada) {
 		super(origem, valor);
-		// TODO Auto-generated constructor stub
+		this.entrada = entrada;
 	}
 
 
@@ -46,15 +50,31 @@ public class ManipulaGasto extends Manipula {
 	}
 	
 	
-	public void adicionaGasto() {
+	public double adicionaGasto() {
 		System.out.println("Informe o valor que você deseja adicionar como gasto: ");
 		this.valor = entrada.nextDouble();
 		
-		
+		System.out.println(this.valor);
 		System.out.println("Informe a origem do gasto: ");
 		this.origem = entrada.next();
 		
+		System.out.println(this.origem);
+		
+//		String ID = "Gasto";
+		
+	//	double saldo = manpSaldo.getValor();
+		
+		//System.out.println(saldo);
+		//saldo = saldo - valor;
+		
+//		escrever(ID, valor,origem, saldo);
+//		escrever(saldo);
+		
+		
 		System.out.println("\n\tDados adicionados com sucesso!\n");
+		
+		return valor;
+		
 		
 	}
 	

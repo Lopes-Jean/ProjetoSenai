@@ -29,26 +29,28 @@ import br.edu.senai.modelo.ManipulaSaldo;
 
 public class Main {
 
-  public static void main(String[] args) { //Arquivo SCV e teste 2
+  public static void main(String[] args) throws IOException { //Arquivo SCV e teste 2
 	//public static void main(String args[]) throws IOException { // Arquivo TXT 1
 
 	  System.out.println("Bem vindo a planilha de gastos");
+	  Scanner entrada = new Scanner(System.in);
+	  
 	  
 	  // Criar acesso aos metodos das classes
 	  EntradaESaida lerArquivo = new EntradaESaida();
-	  ManipulaGasto novoGasto = new ManipulaGasto();
-	  ManipulaReceita novaReceita = new ManipulaReceita();
-	  ManipulaSaldo lerSaldo = new ManipulaSaldo();
+	  ManipulaGasto novoGasto = new ManipulaGasto(entrada);
+	  ManipulaReceita novaReceita = new ManipulaReceita(entrada);
+	  ManipulaSaldo manpSaldo = new ManipulaSaldo();
 	  
 	 
 	  
 	// carregar o banco de dados // criar um get leitura de arquivo 
 	  String path = "C:/Users/Senai/Documents/Jean/ControleFinanceiro/file.txt";
-	  	  lerArquivo.ler();
+	  	  lerArquivo.ler(manpSaldo);
 	  
 	  // perguntar oq ele quer fazer 
 	  
-	  Scanner entrada = new Scanner(System.in);
+	  
 	  
 	  while(true)
 	  {
@@ -59,7 +61,7 @@ public class Main {
 		  if (simbolo.equals("S")|| simbolo.equals("s"))
 		  {
 			  // rotina para buscar saldo disponivel
-			  lerSaldo.buscaSaldo();
+			  manpSaldo.buscaSaldo();
 			  
 		  }
 		  
@@ -68,6 +70,7 @@ public class Main {
 			  // chama a rotina para um novo gasto
 			  
 			  novoGasto.adicionaGasto();
+			  lerArquivo.escrever(50);
 		  }
 		  
 		  else if (simbolo.equals("R")|| simbolo.equals("r"))

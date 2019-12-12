@@ -7,16 +7,12 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Scanner;
 
 import javax.swing.plaf.basic.BasicScrollPaneUI.VSBChangeListener;
 
 public class EntradaESaida {
-	
-	ManipulaSaldo vSaldo = new ManipulaSaldo(); 
-	
-	String dados [];
-	
 	
 	private String Saldo;
 	private String Gastos;
@@ -24,8 +20,7 @@ public class EntradaESaida {
 	
 	
 	public EntradaESaida() {
-		
-		super();
+		super();		
 		
 	}
 
@@ -35,6 +30,7 @@ public class EntradaESaida {
 		Saldo = saldo;
 		Gastos = gastos;
 		Receita = receita;
+		//manpSaldo = new ManipulaSaldo(); 
 	}
 
 
@@ -69,7 +65,7 @@ public class EntradaESaida {
 	
 	
 	// teste TXT 2 
-	public void ler() {
+	public void ler(ManipulaSaldo manpSaldo) {
 		try {
 
             //Faz a leitura do arquivo
@@ -85,39 +81,40 @@ public class EntradaESaida {
             while ( linha != null ) {
 
                 //verifica se a linha contem o caracter de separacao -
-                if ( linha.contains( "-" ) ) {
+              //  if ( linha.contains( ";" ) ) {
 
-                    //Pega o nome do aluno
-                    String nome = linha.substring( 0, linha.indexOf( '-' ) );
-                    
-                    //Pega o restante da linha
-                    linha = linha.substring( linha.indexOf( '-' ) + 1, linha.length() );
-                    
-                    //Remove os espaços a mais
-                    linha = linha.replaceAll( "  +", " " );
-
-                    double soma = 0;
-
+//                    //Pega o nome do aluno
+//                    String nome = linha.substring( 0, linha.indexOf( '-' ) );
+//                    
+//                    //Pega o restante da linha
+//                    linha = linha.substring( linha.indexOf( '-' ) + 1, linha.length() );
+//                    
+//                    //Remove os espaços a mais
+//                    linha = linha.replaceAll( "  +", " " );
+ 
                     //Percorre cada conjunto de possiveis notas
                     for ( String parte : linha.split( " " ) ) {
 
                         //Verifica se não esta vazio
                         if ( !parte.isEmpty() ) {
                             try {
-                                //Tenta converter a parte para double caso consiga soma a media
-                            	//vSaldo.valor = Double.parseDouble( parte );
                             	
+                                //Tenta converter a parte para double
                             	double saldo = Double.parseDouble( parte );
-                            	vSaldo.atualizaSaldo(saldo);
+                            	manpSaldo.setValor(saldo);
                             	
+                            	//vSaldo.atualizaSaldo(saldo);
                             	
-                               // soma += Double.parseDouble( parte );
+                            	double lido = manpSaldo.getValor();
+                      
+                            	System.out.println("valor lido de saldo: " + lido );
+                            	
                             } catch ( NumberFormatException nfe ) {
                             }
                         }
                     }
 
-                }
+              //  }
 
                 //Le a proxima linha
                 linha = leitura.readLine();
@@ -132,6 +129,22 @@ public class EntradaESaida {
 	
 	}
 	
+	
+	public void escrever(double saldo) throws IOException {
+	//	public void escrever(String ID, double valor, String origem, double saldo) {	
+		 FileWriter arquivo = new FileWriter( "C:/Users/Senai/Documents/Jean/ControleFinanceiro/file.txt" );
+		 
+		 PrintWriter gravarArq = new PrintWriter(arquivo);
+        
+		 //saldo = 50;
+        //escreve a primeira linha
+		 gravarArq.print(saldo);
+		 //String linha = leitura.readLine();
+        
+        //Continua a leitura enquanto o arquivo conter linhas
+  //      while ( linha != null ) {
+		
+	}
 	
 //	// Arquivo TXT
 //		

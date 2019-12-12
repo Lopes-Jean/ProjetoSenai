@@ -1,13 +1,10 @@
 package br.edu.senai.modelo;
 
-import java.util.Scanner;
-
 public class ManipulaSaldo extends Manipula {
 	
-	Scanner entrada = new Scanner(System.in);
 	
 	// Construtor vazio
-	public ManipulaSaldo() {
+	public ManipulaSaldo() { 
 		super();
 	}
 
@@ -18,19 +15,12 @@ public class ManipulaSaldo extends Manipula {
 
 	}
 	
-	public void atualizaSaldo(double saldo) {
-		
-		this.valor = saldo;
-		
-	}
 
 
 	public void buscaSaldo() {
 		
-		
-		System.out.println("Seu saldo atual é de: " + this.valor);
-		
 		// Criar forma de buscar o saldo disponível 
+		System.out.println("Seu saldo atual é de: " + this.valor);
 		
 	}
 
