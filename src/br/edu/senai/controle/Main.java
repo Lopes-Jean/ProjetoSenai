@@ -1,20 +1,4 @@
 package br.edu.senai.controle;
-//
-//import java.io.IOException;
-//
-//import br.edu.senai.modelo.ManipuladorArquivo;
-//
-//public class Main {
-// 
-//    public static void main(String args[]) throws IOException {
-//        String path = "C:/Users/Senai/Documents/Jean/ControleFinanceiro/file.txt";
-// 
-//        ManipuladorArquivo.leitor(path);
-//        ManipuladorArquivo.escritor(path);
-//        ManipuladorArquivo.leitor(path);
-//    }
-// 
-//}
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -24,65 +8,75 @@ import br.edu.senai.modelo.ManipulaGasto;
 import br.edu.senai.modelo.ManipulaReceita;
 import br.edu.senai.modelo.ManipulaSaldo;
 
-// criar um projeto onde ser· passado o valor em caixa, o valor adicionado, o valor retirado e retornar o total instant‚neo. 
-
+// criar um projeto onde ser√° passado o valor em caixa, o valor adicionado, o valor retirado e retornar o total instant√¢neo. 
 
 public class Main {
 
-  public static void main(String[] args) throws IOException { //Arquivo SCV e teste 2
-	//public static void main(String args[]) throws IOException { // Arquivo TXT 1
+  public static void main(String[] args) throws IOException { 
 
+	  
+	  // Informar o caminho para o arquivo de banco de dados
+	  String endereco = "C:\\Users\\Public\\ControleFinanceiro.txt";
+	  String ID = "";
+	  String origem = "";
+	  double valor = 0;
+	  
 	  System.out.println("Bem vindo a planilha de gastos");
 	  Scanner entrada = new Scanner(System.in);
-	  
-	  
+
 	  // Criar acesso aos metodos das classes
-	  EntradaESaida lerArquivo = new EntradaESaida();
-	  ManipulaGasto novoGasto = new ManipulaGasto(entrada);
-	  ManipulaReceita novaReceita = new ManipulaReceita(entrada);
+	  EntradaESaida arquivo = new EntradaESaida();
 	  ManipulaSaldo manpSaldo = new ManipulaSaldo();
-	  
-	 
-	  
-	// carregar o banco de dados // criar um get leitura de arquivo 
-	  String path = "C:/Users/Senai/Documents/Jean/ControleFinanceiro/file.txt";
-	  	  lerArquivo.ler(manpSaldo);
-	  
-	  // perguntar oq ele quer fazer 
-	  
-	  
-	  
+	  ManipulaGasto gasto = new ManipulaGasto(entrada , manpSaldo);
+	  ManipulaReceita novaReceita = new ManipulaReceita(entrada);
+ 
+	  // carregar o banco de dados // criar um get leitura de arquivo 
+	  arquivo.ler(ID, valor, origem, manpSaldo , endereco, false);
+
 	  while(true)
 	  {
-		  System.out.println("Informe oque vocÍ deseja fazer: \n\tS - Para retornar valor de saldo \n\tG - Para adicionar novo gasto \n\tR - para adicionar um novo rendimento \n\tQ - Para encerrar o programa");
+		// perguntar o que o usu√°rio deseja fazer 
+		  System.out.println("Informe o que voc√™ deseja fazer: \n\t" +
+				  "S - Para visualizar o seu saldo \n\t" +
+				  "G - Para adicionar novo gasto \n\t" +
+				  "R - Para adicionar um novo rendimento \n\t" +
+				  "L - Para listar os gastos \n\t" +
+				  "Q - Para encerrar o programa ");
 		  
 		  
-		  String simbolo = entrada.next();
-		  if (simbolo.equals("S")|| simbolo.equals("s"))
+		  String simbolo = entrada.next().toUpperCase();
+		  if (simbolo.equals("S"))
 		  {
 			  // rotina para buscar saldo disponivel
 			  manpSaldo.buscaSaldo();
 			  
 		  }
 		  
-		  else if (simbolo.equals("G")|| simbolo.equals("g"))
+		  else if (simbolo.equals("G"))
 		  {
-			  // chama a rotina para um novo gasto
-			  
-			  novoGasto.adicionaGasto();
-			  lerArquivo.escrever(50);
+			  // chama a rotina para um novo gasto 
+			  gasto.adicionaGasto(manpSaldo, arquivo, endereco);
 		  }
 		  
-		  else if (simbolo.equals("R")|| simbolo.equals("r"))
+		  else if (simbolo.equals("R"))
 		  {
 			  // rotina para uma nova receita
-			  
-			  novaReceita.adicionaReceita();
+			  novaReceita.adicionaReceita(manpSaldo, arquivo, endereco);
 		  }
 		  
-		  else if (simbolo.equals("Q")|| simbolo.equals("q"))
+		  else if (simbolo.equals("L"))
+		  {
+			// chama a rotina para listar gastos 
+			  gasto.listaGasto(manpSaldo, arquivo, endereco);
+		  }
+		  
+		  else if (simbolo.equals("Q"))
 		  {
 			  break;
+		  }
+		  
+		  else {
+			  System.out.println("\tComando Inv√°lido\n");
 		  }
 	  }	  
   }
