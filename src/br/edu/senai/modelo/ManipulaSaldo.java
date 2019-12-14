@@ -14,14 +14,13 @@ public class ManipulaSaldo extends Manipula {
 		super(origem, valor);
 
 	}
-	
-
 
 	public void buscaSaldo() {
 		
-		// Criar forma de buscar o saldo disponível 
-		System.out.println("Seu saldo atual é de: " + this.valor);
+		// Comando para buscar o saldo disponÃ­vel 
+		System.out.println("Seu saldo atual Ã© de: " + this.valor + "\n");
 		
 	}
 
 }
+
